@@ -1,0 +1,693 @@
+%
+% ---------------------------------------------------------------
+% Copyright (C) 2012-2018 Gang Li
+% ---------------------------------------------------------------
+%
+% This work is the default powerdot-tuliplab style test file and may be
+% distributed and/or modified under the conditions of the LaTeX Project Public
+% License, either version 1.3 of this license or (at your option) any later
+% version. The latest version of this license is in
+% http://www.latex-project.org/lppl.txt and version 1.3 or later is part of all
+% distributions of LaTeX version 2003/12/01 or later.
+%
+% This work has the LPPL maintenance status "maintained".
+%
+% This Current Maintainer of this work is Gang Li.
+%
+%
+
+\documentclass[
+ size=14pt,
+ paper=smartboard,  %a4paper, smartboard, screen
+ mode=present, 		%present, handout, print
+ display=slides, 	% slidesnotes, notes, slides
+ style=tuliplab,  	% TULIP Lab style
+ pauseslide,
+ fleqn,leqno]{powerdot}
+
+
+\usepackage{cancel}
+\usepackage{caption}
+\usepackage{stackengine}
+\usepackage{smartdiagram}
+\usepackage{attrib}
+\usepackage{amssymb}
+\usepackage{amsmath} 
+\usepackage{amsthm} 
+\usepackage{mathtools}
+\usepackage{rotating}
+\usepackage{graphicx}
+\usepackage{boxedminipage}
+\usepackage{rotate}
+\usepackage{calc}
+\usepackage[absolute]{textpos}
+\usepackage{psfrag,overpic}
+\usepackage{fouriernc}
+\usepackage{pstricks,pst-3d,pst-grad,pstricks-add,pst-text,pst-node,pst-tree}
+\usepackage{moreverb,epsfig,subfigure}
+\usepackage{color}
+\usepackage{booktabs}
+\usepackage{etex}
+\usepackage{breqn}
+\usepackage{multirow}
+\usepackage{natbib}
+\usepackage{bibentry}
+\usepackage{gitinfo2}
+\usepackage{siunitx}
+\usepackage{nicefrac}
+%\usepackage{geometry}
+%\geometry{verbose,letterpaper}
+\usepackage{media9}
+\usepackage{animate}
+%\usepackage{movie15}
+\usepackage{auto-pst-pdf}
+
+\usepackage{breakurl}
+\usepackage{fontawesome}
+\usepackage{xcolor}
+\usepackage{multicol}
+
+
+
+\usepackage{verbatim}
+\usepackage[utf8]{inputenc}
+\usepackage{dtk-logos}
+\usepackage{tikz}
+\usepackage{adigraph}
+%\usepackage{tkz-graph}
+\usepackage{hyperref}
+%\usepackage{ulem}
+\usepackage{pgfplots}
+\usepackage{verbatim}
+\usepackage{fontawesome}
+
+
+\usepackage{todonotes}
+% \usepackage{pst-rel-points}
+\usepackage{animate}
+\usepackage{fontawesome}
+
+\usepackage{listings}
+\lstset{frameround=fttt,
+frame=trBL,
+stringstyle=\ttfamily,
+backgroundcolor=\color{yellow!20},
+basicstyle=\footnotesize\ttfamily}
+\lstnewenvironment{code}{
+\lstset{frame=single,escapeinside=`',
+backgroundcolor=\color{yellow!20},
+basicstyle=\footnotesize\ttfamily}
+}{}
+
+
+\usepackage{hyperref}
+\hypersetup{ % TODO: PDF meta Data
+  pdftitle={Presentation Title},
+  pdfauthor={Gang Li},
+  pdfpagemode={FullScreen},
+  pdfborder={0 0 0}
+}
+
+
+% \usepackage{auto-pst-pdf}
+% package to show source code
+
+\definecolor{LightGray}{rgb}{0.9,0.9,0.9}
+\newlength{\pixel}\setlength\pixel{0.000714285714\slidewidth}
+\setlength{\TPHorizModule}{\slidewidth}
+\setlength{\TPVertModule}{\slideheight}
+\newcommand\highlight[1]{\fbox{#1}}
+\newcommand\icite[1]{{\footnotesize [#1]}}
+
+\newcommand\twotonebox[2]{\fcolorbox{pdcolor2}{pdcolor2}
+{#1\vphantom{#2}}\fcolorbox{pdcolor2}{white}{#2\vphantom{#1}}}
+\newcommand\twotoneboxo[2]{\fcolorbox{pdcolor2}{pdcolor2}
+{#1}\fcolorbox{pdcolor2}{white}{#2}}
+\newcommand\vpspace[1]{\vphantom{\vspace{#1}}}
+\newcommand\hpspace[1]{\hphantom{\hspace{#1}}}
+\newcommand\COMMENT[1]{}
+
+\newcommand\placepos[3]{\hbox to\z@{\kern#1
+        \raisebox{-#2}[\z@][\z@]{#3}\hss}\ignorespaces}
+
+\renewcommand{\baselinestretch}{1.2}
+
+
+\newcommand{\draftnote}[3]{
+	\todo[author=#2,color=#1!30,size=\footnotesize]{\textsf{#3}}	}
+% TODO: add yourself here:
+%
+\newcommand{\gangli}[1]{\draftnote{blue}{GLi:}{#1}}
+\newcommand{\shaoni}[1]{\draftnote{green}{sn:}{#1}}
+\newcommand{\gliMarker}
+	{\todo[author=GLi,size=\tiny,inline,color=blue!40]
+	{Gang Li has worked up to here.}}
+\newcommand{\snMarker}
+	{\todo[author=Sn,size=\tiny,inline,color=green!40]
+	{Shaoni has worked up to here.}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% title
+% TODO: Customize to your Own Title, Name, Address
+%
+\title{BIKE SHARING DEMAND PREDICTION}
+\author{
+Chouyin Zhang
+\\
+\\Hunan University
+\\China
+}
+\date{\gitCommitterDate}
+
+
+% Customize the setting of slides
+\pdsetup{
+% TODO: Customize the left footer, and right footer
+rf=\href{http://www.tulip.org.au}{
+Last Changed by: \textsc{\gitCommitterName}\ \gitVtagn-\gitAbbrevHash\ (\gitAuthorDate)
+},
+cf={BIKE SHARING DEMAND PREDICTION},
+}
+
+
+\begin{document}
+
+\maketitle
+%\begin{slide}{Overview}
+%\tableofcontents[content=sections]
+%\end{slide}
+%%==========================================================================================
+\begin{slide}[toc=,bm=]{Overview}
+\tableofcontents[content=currentsection,type=1]
+\end{slide}
+%%
+%%==========================================================================================
+
+
+\section{Problem Definition}
+
+
+%%==========================================================================================
+%%
+\begin{slide}{Problem Introduction}
+\begin{center}
+\twotonebox{\rotatebox{90}{Defn}}{\parbox{.86\textwidth}
+{Problem Background
+\begin{itemize}
+\item Bike sharing systems are a means of renting bicycles where the process of obtaining membership, rental, and bike return is automated via a network of kiosk locations throughout a city. 
+\item  Using these systems, people are able rent a bike from a one location and return it to a different place on an as-needed basis.
+\end{itemize}
+}}
+
+\end{center}
+
+\vspace{1ex}
+
+\begin{center}
+\twotonebox{\rotatebox{90}{Defn}}{\parbox{.86\textwidth}
+{Problem introduction
+\begin{itemize}
+\item In the data generated, the duration of travel, departure location, arrival location, and time elapsed is explicitly recorded. 
+\item  Bike sharing systems therefore function as a sensor network, which can be used for studying mobility in a city.
+\item In this competition, participants are asked to combine historical usage patterns with weather data in order to \emph{forecast bike rental demand}.
+\end{itemize}
+	}}
+	
+\end{center}
+
+
+%%==========================================================================================
+%%==========================================================================================
+
+\end{slide}
+%%
+%%==========================================================================================
+
+
+\section{Exploratory Data Analysis}
+
+
+
+%%==========================================================================================
+%%
+
+%%==========================================================================================
+
+
+%%
+%%==========================================================================================
+\begin{slide}[toc=,bm=]{Exploratory Data Analysis}
+\begin{itemize}
+\item
+Distribution of variables
+		
+\begin{itemize}
+\item
+Distribution of dependent variables \emph{count}, which represents bike usage.
+			
+\item
+ Distribution of \emph{count} with \emph{season}, \emph{holiday}, \emph{weather},\emph{month}, and \emph{working day}.		
+			
+	
+\end{itemize}
+\end{itemize}
+	
+\begin{center}
+\begin{minipage}{0.3\linewidth}
+\centering
+
+\begin{figure}
+	\caption{Description of Count}
+	\includegraphics[width=6.5cm,height=5.5cm]{D:/D：downloads/p1}
+\end{figure}
+
+\end{minipage}
+\hfill
+\begin{minipage}{0.3\linewidth}
+\centering
+
+\begin{figure}
+	\caption{Description of Count and Month}
+	\includegraphics[width=6.5cm,height=5.5cm]{D:/D：downloads/P2(2)}
+\end{figure}		
+
+\end{minipage}
+\hfill
+\begin{minipage}{0.3\linewidth}
+\centering
+
+\begin{figure}
+	\caption{Description of Count and Weather}
+	\includegraphics[width=6.5cm,height=5.5cm]{D:/D：downloads/p_weather}
+\end{figure}
+
+
+\end{minipage}
+\end{center}
+	
+	%%==========================================================================================
+	%%==========================================================================================
+	
+\end{slide}
+
+%%==========================================================================================
+%%
+
+%%
+%%==========================================================================================
+\begin{slide}[toc=,bm=]{Exploratory Data Analysis}
+	\begin{itemize}
+		\item
+		Distribution of variables
+		
+		\begin{itemize}
+			\item
+			Distribution of dependent variables \emph{count}, which represents bike usage.
+			
+			\item
+			Distribution of \emph{count} with \emph{season},\emph{holiday}, \emph{weather},\emph{month}, and \emph{working day}.		
+			
+			
+		\end{itemize}
+	\end{itemize}
+	
+	\begin{center}
+		\begin{minipage}{0.3\linewidth}
+			\centering
+			
+\begin{figure}
+	\caption[Description of Count and Workingday]{}
+	\label{fig:pworking-1}
+	\includegraphics[width=6.5cm,height=5.5cm]{"D:/D：downloads/p_working (1)"}
+\end{figure}
+			
+		\end{minipage}
+		\hfill
+		\begin{minipage}{0.3\linewidth}
+			\centering
+			
+\begin{figure}
+	\caption[Description of Count and Season]{}
+	\label{fig:pseason}
+	\includegraphics[width=6.5cm,height=5.5cm]{D:/D：downloads/p_season}
+\end{figure}
+				
+			
+		\end{minipage}
+		\hfill
+		\begin{minipage}{0.3\linewidth}
+			\centering
+			
+\begin{figure}
+	\caption[Description of Count and Holiday]{}
+	\label{fig:pholiday}
+	\includegraphics[width=6.5cm,height=5.5cm]{D:/D：downloads/p_holiday}
+\end{figure}
+				
+			
+		\end{minipage}
+	\end{center}
+	
+	%%==========================================================================================
+	%%==========================================================================================
+	
+\end{slide}
+
+%%==========================================================================================
+%%
+\begin{slide}[toc=,bm=]{Exploratory Data Analysis}
+	\begin{itemize}
+		\item
+		Distribution of variables
+		
+		\begin{itemize}
+			\item
+		\emph{Four jointplots} showing  how daily usage varies with the continuous variables.
+					
+			
+		\end{itemize}
+	\end{itemize}
+	
+	\begin{center}
+		\begin{minipage}{0.3\linewidth}
+			\centering
+			
+\begin{figure}
+	\caption[Total Bike usage vs Humidity]{}
+	\label{fig:jointplothumidity}
+	\includegraphics[width=5.5cm,height=7.5cm]{D:/D：downloads/jointplot_humidity}
+\end{figure}
+		
+		\end{minipage}
+		\hfill
+		\begin{minipage}{0.3\linewidth}
+			\centering
+			
+\begin{figure}
+	\caption[Total Bike Usage vs Temperature]{}
+	\label{fig:jointplottemp}
+	\includegraphics[width=5.5cm,height=7.5cm]{D:/D：downloads/jointplot_temp}
+\end{figure}
+				
+		
+		\end{minipage}
+		\hfill
+		\begin{minipage}{0.3\linewidth}
+			\centering
+		
+\begin{figure}
+	\caption[Total Bike usage vs Wind Speed]{}
+	\label{fig:jointplotwindspeed}
+	\includegraphics[width=5.5cm,height=7.5cm]{D:/D：downloads/jointplot_windspeed}
+\end{figure}
+				
+		
+		\end{minipage}
+	\end{center}
+	
+	%%==========================================================================================
+	%%==========================================================================================
+	
+\end{slide}
+
+%%
+%%==========================================================================================
+\begin{slide}[toc=,bm=]{Exploratory Data Analysis}
+
+
+		
+		\begin{itemize}
+			\item
+			 \emph{A correlation heatmap} showing the \emph{2D correlation matrix} for the features in our dataset.
+			
+			
+		\end{itemize}
+
+	
+
+\begin{figure}
+	\centering
+	\includegraphics[width=10.5cm, height=10.5cm]{D:/D：downloads/heatmap}
+	\caption{Correlation heatmap}
+	\label{fig:heatmap}
+\end{figure}
+		
+	
+	
+
+\end{slide}
+
+%%==========================================================================================
+%%
+
+\section{Data Preprocessing}
+
+
+%%==========================================================================================
+%%
+\begin{slide}{Data Preprocessing--Logarithmic transformation}
+	\begin{center}
+		\twotonebox{\rotatebox{90}{Defn}}{\parbox{.86\textwidth}
+			{Logarithmic transformation
+				\begin{itemize}
+					\item First we can look at the distribution of count. The distribution is heavily skewed right, which is not well approximated by a normal distribution.
+					\item Taking the natural log of the count data gives a distribution slightly more normally distributed, as shown above, and also in the quantile-quantile (Q-Q) plots below. 
+				\end{itemize}
+		}}
+		
+	\end{center}
+
+	
+\begin{figure}
+	\centering
+	\caption[Q-Q plots for total bike usage and logarithmic transformation]{}
+	\label{fig:qqplot-1}
+	\includegraphics[width=8.5cm, height=5.5cm]{"D:/D：downloads/QQ_plot (1)"}
+\end{figure}
+	
+\end{slide}
+
+%%==========================================================================================
+%%
+\begin{slide}{Data Preprocessing--Drop variables}
+	\begin{center}
+		\twotonebox{\rotatebox{90}{Defn}}{\parbox{.86\textwidth}
+			{Drop some variables from our dataframe
+				\begin{itemize}
+					\item 
+					1.Drop casual and registered as the test set does not contain data for the casual count or the registered count.
+					\\2. Drop atemp since it has almost perfect correlation with temp.
+					\\3.Drop all day of the month data from the training set before training our models. 
+				\end{itemize}
+		}}
+		
+	\end{center}
+	
+	\vspace{1ex}
+		\begin{center}
+		\twotonebox{\rotatebox{90}{Defn}}{\parbox{.86\textwidth}
+			{Replace the target variable count with the natural logarithm of count
+				\begin{itemize}
+					\item 
+				As the natural logarithm of count is more normally distributed, Let us replace the target variable count with  y=ln(count+1).
+				\end{itemize}
+		}}
+		
+	\end{center}
+
+\end{slide}
+	
+%%==========================================================================================
+%%
+\begin{slide}{Data Preprocessing-- Replace and Split}
+	\begin{center}
+		\twotonebox{\rotatebox{90}{Defn}}{\parbox{.86\textwidth}
+			{Replace the categorical data with binary dummy variables
+				\begin{itemize}
+					\item 
+				 The categorical data is expressed as an arbitrary numerical value. Therefore we can use dummy coding, replacing the categorical data with binary dummy variables using the pandas function. 
+				\end{itemize}
+		}}
+		
+	\end{center}
+	
+	\vspace{0.5ex}
+	
+	\begin{center}
+		\twotonebox{\rotatebox{90}{Defn}}{\parbox{.86\textwidth}
+			{Split the labelled training set into two sets
+				\begin{itemize}
+					\item 
+					One for training our models, and a validation set for determining the best set of hyperparameters.
+				\end{itemize}
+		}}
+		
+	\end{center}
+
+\vspace{0.5ex}
+
+\begin{center}
+	\twotonebox{\rotatebox{90}{Defn}}{\parbox{.86\textwidth}
+		{Define a prediction function
+			\begin{itemize}
+				\item 
+				Finally, let's define a function predict that will report prediction scores for a given model.
+			\end{itemize}
+	}}
+	
+\end{center}	
+	
+\end{slide}
+
+
+%%
+%%==========================================================================================
+
+
+\section{Train and Apply Models}
+
+
+%%==========================================================================================
+%%
+
+
+
+
+
+
+
+%%
+%%==========================================================================================
+
+
+%%==========================================================================================
+%%
+\begin{slide}[toc=,bm=]{Train and Apply Models}
+\begin{itemize}
+\item
+Build and apply some chosen model
+
+\end{itemize}
+\begin{table}
+\setlength{\abovecaptionskip}{0pt}
+\setlength{\belowcaptionskip}{10pt}
+\centering
+\caption{$\alpha = 4$}
+
+\begin{tabular}{  c  |  c }
+\toprule
+\centering
+\texttt{Models}  & \texttt{RMSLE value}  \\
+\midrule
+ {\{$LinearRegression$\}}       & $0.136$ \\
+ {\{$Ridge$\}}                & $0.137$ \\
+ {\{$Lasso$\} }                 & $0.148$ \\
+ {\{$RandomForestRegressor$\}}       & $0.084$  \\
+ 	
+ {\{$GradientBoostingRegressor$\}}      & $0.080$  \\
+ 	
+ {\{$XGBRegressor$\} }            & $0.085$  \\
+ 	
+ {\{$LGBMRegressor$\} }           & $0.078$  \\
+\bottomrule
+\end{tabular}
+\end{table}
+\begin{description}
+	\item
+	It can be observed that the LGBMRegressor model can get the best score. \\
+	So, we apply this best model to test data.
+	
+\end{description}
+
+%%==========================================================================================
+%%==========================================================================================
+
+\end{slide}
+%%
+%%==========================================================================================
+\begin{slide}[toc=,bm=]{Train and Apply Models}
+	\begin{itemize}
+		\item
+		The output of the prediction is as below
+		
+	\end{itemize}
+	\vspace{.4cm}          
+	\begin{minipage}{0.5\linewidth}
+		\centering
+	
+\begin{figure}
+	\centering
+	\caption{}
+	\label{fig:predicthead}
+	\includegraphics[width=8.5cm, height=5.5cm]{D:/D：downloads/predict_head}
+\end{figure}
+		
+	\end{minipage}
+%%==========================================================================================	%%==========================================================================================
+	
+\end{slide}
+
+%%==========================================================================================
+%%
+
+%%
+%%==========================================================================================
+
+
+\section{Conclusion}
+
+%%==========================================================================================
+%%
+\begin{slide}[toc=,bm=]{Conclusion}
+\begin{itemize}
+\item
+ In this data mining task, I use the dataset from Kaggle. According the problem background given, I apply EDA, data preprocessing to the dataset, and finally apply the best model to test data, successfully finish this task.
+
+\end{itemize}
+
+%%==========================================================================================
+\begin{note}
+In conclusion,
+we firstly formalized the problem of
+group outlying aspects mining,
+
+Then proposed a novel method GOAM algorithm to address the problem of
+group outlying aspects mining,
+and the proposed method use pruning to reduce time complexity
+while identifying the suitable set of outlying features for the interested group.
+
+Thank you and any question?
+\end{note}
+%%==========================================================================================
+
+\end{slide}
+%%
+%%==========================================================================================
+
+
+%%==========================================================================================
+%
+
+%%==========================================================================================
+% TODO: Contact Page
+\begin{wideslide}[toc=,bm=]{Contact Information}
+\centering
+\vspace{\stretch{1}}
+\twocolumn[
+lcolwidth=0.35\linewidth,
+rcolwidth=0.65\linewidth
+]
+{
+% \centerline{\includegraphics[scale=.2]{tulip-logo.eps}}
+}
+{
+\vspace{\stretch{1}}
+Chouyin Zhang\\
+Hunan University, China
+
+}
+\vspace{\stretch{1}}
+\end{wideslide}
+\end{document}
+
+\endinput

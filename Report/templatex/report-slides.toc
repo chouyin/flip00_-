@@ -1,0 +1,9 @@
+\pdcontentsline{1}{3}{Problem Definition}
+\pdcontentsline{0}{4}{Problem Introduction}
+\pdcontentsline{1}{5}{Exploratory Data Analysis}
+\pdcontentsline{1}{10}{Data Preprocessing}
+\pdcontentsline{0}{11}{Data Preprocessing--Logarithmic transformation}
+\pdcontentsline{0}{12}{Data Preprocessing--Drop variables}
+\pdcontentsline{0}{13}{Data Preprocessing-- Replace and Split}
+\pdcontentsline{1}{14}{Train and Apply Models}
+\pdcontentsline{1}{17}{Conclusion}
